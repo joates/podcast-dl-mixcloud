@@ -14,10 +14,10 @@ var args = require('minimist')(process.argv.slice(2))
 
 if (podcasts.length > 0) {
 
-  console.log('\nPlease wait for all downloads to complete..')
-  console.log('(can take several minutes, depending on connection speed)\n')
-
-console.log('processing: '+ user, podcasts)
+  //Info
+  console.log('\nPlease wait for all downloads to complete..' +
+              '\n(this can take several minutes, depending on connection speed)' +
+              '\n\nprocessing: '+ user, podcasts)
 
   podcasts.forEach(function(podcast_id) {
 
@@ -38,23 +38,29 @@ console.log('processing: '+ user, podcasts)
         console.error('Network error:', err.message)
       })
       res.on('end', function() {
+
+        //Parse
         var re  = /\<div class=\"cloudcast-waveform\" m-waveform=\"(.*?)\.json"\>\<\/div\>/g
-          , m = body.match(re)[0]
-          , url = m.substring(73, m.length - 13)
+          , m = body.match(re)
 
-        url = stream_host + url +'.m4a'
+	if (m !== null && m[0]) {
+          var url = m[0].substring(73, m[0].length - 13)
+          url = stream_host + url +'.m4a'
 
-        var p = mixcloud.cloudcast(user, podcast_id)
-        p.then(function(obj) {
-          var title = obj.name +'.m4a'
-          console.log('downloading >>', outpath +'/'+ title)
-          https.get(url, function(res) {
-            res.pipe(fs.createWriteStream(join(fs_path, title)))
+          var p = mixcloud.cloudcast(user, podcast_id)
+          p.then(function(obj) {
+
+	    //Download
+            var title = obj.name +'.m4a'
+            console.log('downloading >>', fs_path +'/'+ title)
+            https.get(url, function(res) {
+              res.pipe(fs.createWriteStream(join(fs_path, title)))
+            })
           })
-        })
-        p.catch(function(err) {
-          console.error(err.message, err.stack)
-        })
+          p.catch(function(err) {
+            console.error(err.message, err.stack)
+          })
+	}
 
       })
     })

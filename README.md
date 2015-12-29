@@ -18,9 +18,9 @@ node index.js [user] [podcast_id (or space-separated list of podcast_ids)]
 ```
 
 
-### internals
+### dev notes
 
-this code uses data-streaming direct to file & promises, so it should be both efficient (as fast as your connection will allow) and any errors should be captured and reported without halting the process.
+consider this code as __alpha__ quality, it relies upon some regexp matching of HTML text which could easily break
 
 
 ### license

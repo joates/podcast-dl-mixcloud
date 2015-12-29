@@ -1,0 +1,29 @@
+{
+  "name": "podcast-dl-mixcloud",
+  "version": "2.1.0",
+  "description": "CLI to easily download podcast(s) from mixcloud.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joates/podcast-dl-mixcloud.git"
+  },
+  "keywords": [
+    "podcast",
+    "download",
+    "mixcloud"
+  ],
+  "author": "@joat_es (http://joat.es)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joates/podcast-dl-mixcloud/issues"
+  },
+  "dependencies": {
+    "follow-redirects": "^0.0.7",
+    "minimist": "^1.2.0",
+    "mixcloud": "^1.0.1"
+  },
+  "homepage": "https://github.com/joates/podcast-dl-mixcloud#readme"
+}
