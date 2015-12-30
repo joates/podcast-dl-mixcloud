@@ -7,7 +7,7 @@ CLI to easily download podcast(s) from mixcloud.
 
 ```shell
 npm i podcast-dl-mixcloud
-cd podcast-dl-mixcloud
+cd ./node_modules/podcast-dl-mixcloud
 ```
 
 
@@ -17,6 +17,8 @@ cd podcast-dl-mixcloud
 node index.js [user] [podcast_id (or space-separated list of podcast_ids)]
 ```
 
+*e.g. to download 3 podcasts from Resident Advisor*:  
+```node index.js residentadvisor ra105 ra335 ra442```
 
 ### dev notes
 
