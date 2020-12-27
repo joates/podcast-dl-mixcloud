@@ -3,6 +3,9 @@
   "version": "2.1.1",
   "description": "CLI to easily download podcast(s) from mixcloud.",
   "main": "index.js",
+  "bin": {
+    "podcast-dl-mixcloud": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
